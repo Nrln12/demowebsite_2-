@@ -1,0 +1,54 @@
+$primary:#f5cac3;
+$secondary: #2a9d8f;
+$body-color:#f4f4f4;
+$paragraph-margin:30px;
+@function font-weight($w_prop){
+  @return map-get($font-weight,$w_prop)
+}
+$font-size:(
+  "small":14px,
+  "medium":18px,
+  "large":24px
+);
+$font-weight:(
+  "regular":500,
+  "medium":700,
+  "bold":900
+);
+$padding-sizes:(
+  "normal":13px 15px,
+  "medium":20px 25px,
+  "large":25px 30px
+);
+@mixin flex-col($direction) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+}
+body{
+  background-color: $body-color;
+}
+p{
+  margin: $paragraph-margin;
+  color: $primary;
+  font-size: map-get($font-size,small);
+  font-weight: font-weight(bold);
+  padding: 2em 3em;
+}
+.card {
+  width: 80%;
+  margin: 0px auto;
+  background-color: $secondary;
+  @include flex-col(column);
+  padding: map-get($padding-sizes,"medium");
+
+  .card-header{
+    background-color: $primary;
+    padding: map-get($padding-sizes, normal);
+    width: 100%;
+  }
+  &:hover{
+    background-color: $body-color;
+  }
+}
